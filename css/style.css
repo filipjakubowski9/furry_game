@@ -17,13 +17,12 @@ section#score {
   margin: 1em auto;
 }
 
-#board  > div {    
+#board > div {
   border: 1px solid black;
   float: left;
   width: 64px;
   height: 64px;
 }
-
 
 section#score div {
   width: 10em;
@@ -37,14 +36,12 @@ section#score div {
   margin: 1em auto;
 }
 
-
-
-
 .furry {
   background-image: url('../images/furry.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .coin {
   background-image: url('../images/coin.png');
   background-repeat: no-repeat;
