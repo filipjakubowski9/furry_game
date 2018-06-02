@@ -54,6 +54,28 @@ document.addEventListener('DOMContentLoaded', function() {
         this.showFurry();
     }
 
+    Game.prototype.turnFurry = function(event) {
+        switch (event.which) {
+            case 37:
+            this.furry.direction = 'left';
+            break;
+            case 38:
+            this.furry.direction = 'up';
+            break;
+            case 39:
+            this.furry.direction = 'right';
+            break;
+            case 40:
+            this.furry.direction = 'down';
+            break;
+        }
+    }
+
+
+    document.addEventListener('keydown', function(event) {
+        Game.turnFurry(event);
+    });
+
     Game.prototype.startGame = function() {
         var self = this;
         this.idSetInterval = setInterval(function() {
