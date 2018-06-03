@@ -247,7 +247,7 @@ Game.prototype.gameOver = function () {
 Game.prototype.over = function () {
     var over = document.querySelector('#over');
     over.style.display = 'block';
-    over.innerHTML = 'GAME OVER <br> <strong> SCORE: ' + this.score;
+    over.innerHTML = '<p> GAME OVER <br> <strong> SCORE: ' + this.score + '</p>';
 };
 
 Game.prototype.startGame = function () {

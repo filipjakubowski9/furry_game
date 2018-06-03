@@ -59,6 +59,12 @@ section#over {
   background-color: rgba(255, 255, 0, 0.75);
 }
 
+section#over>p {
+    border: 2px solid red;
+    width: 310px;
+    font-size: 50px;
+}
+
 section#over pre {
   display: inline-block;
   width: 100%;
