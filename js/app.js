@@ -51,35 +51,55 @@ document.addEventListener('DOMContentLoaded', function() {
         if(this.furry.direction === 'up') {
             this.furry.y = this.furry.y - 1;
         }
+        this.gameOver();
         this.showFurry();
+        this.checkCoinCollision();
     }
 
     Game.prototype.turnFurry = function(event) {
         switch (event.which) {
             case 37:
-            this.furry.direction = 'left';
-            break;
+                this.furry.direction = 'left';
+                break;
             case 38:
-            this.furry.direction = 'up';
-            break;
+                this.furry.direction = 'up';
+                break;
             case 39:
-            this.furry.direction = 'right';
-            break;
+                this.furry.direction = 'right';
+                break;
             case 40:
-            this.furry.direction = 'down';
-            break;
+                this.furry.direction = 'down';
+                break;
         }
     }
 
+    Game.prototype.checkCoinCollision = function() {
+        if (this.furry.x === this.coin.x && this.furry.y === this.coin.y) {
+            this.board[this.index(this.coin.x, this.coin.y)].classList.remove('coin');
+            this.score++;
+            document.querySelector('#score strong').innerText = this.score;
+            this.coin = new Coin();
+            this.showCoin();
+        }
+    }
 
-    document.addEventListener('keydown', function(event) {
-        Game.turnFurry(event);
-    });
+    Game.prototype.gameOver = function() {
+        if (this.furry.x < 0 || this.furry.x > 9 || this.furry.y < 0 || this.furry.y > 9) {
+            clearInterval(this.idSetInterval);
+            this.hideVisibleFurry();
+            this.over();
+        }
+    }
+
+    Game.prototype.over = function() {
+        var over = document.querySelector('#over');
+        over.style.display = 'block';
+        over.innerHTML = 'GAME OVER <br> <strong> SCORE: ' + this.score;
+    }
 
     Game.prototype.startGame = function() {
         var self = this;
         this.idSetInterval = setInterval(function() {
-            // console.log("wooohoo");
             self.moveFurry();
         }, 250);
     }
@@ -88,5 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
     game.showFurry();
     game.showCoin();
     game.startGame();
+
+    document.addEventListener('keydown', function(event){
+        game.turnFurry(event);
+    });
 
 });
