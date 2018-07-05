@@ -88,9 +88,9 @@ Game.prototype.over = function() {
 }
 
 Game.prototype.startGame = function() {
-    var self = this;
-    this.idSetInterval = setInterval(function() {
-        self.moveFurry();
+
+    this.idSetInterval = setInterval( () => {
+        this.moveFurry();
     }, 250);
 }
 
